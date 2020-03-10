@@ -4,23 +4,42 @@
         <script src="../faculty.js"></script>
     
     </head>
-    
+    <style>
+        tr{
+            background-color: rosybrown;
+            border-width:5px; 
+            border-style:Solid;
+            margin:10px; 
+        }
+      
+        img{
+            width:100%;
+        }
+    </style>
     <body>
+        <div>
         <script>
         d3.select("body")
-            .append("ul")
-                .selectAll("li")
+            .append("table")
+        var rows = d3.select("table")
+                .selectAll("tr")
                 .data(employees)
                 .enter()
-                .append("li")
+                .append("tr")
+                rows.append("td")
                     .append("img")
                     .attr("src",function(employee)       
                     {
                         return employee.photo;   
                     })
-            
+                rows.append("td")
+                    .text(function(employee)       
+                    {
+                        return employee.firstName +" "+ employee.lastName;   
+                    })
+
         </script>
-        
+        </div>
     </body>
     
     
